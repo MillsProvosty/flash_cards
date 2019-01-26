@@ -1,3 +1,4 @@
+require "pry"
 class Turn
   attr_reader :guess, :card
   def initialize(guess, card)
@@ -6,18 +7,17 @@ class Turn
   end
 
   def correct?
-    @guess == card.answer?
+    @guess == card.answer
   end
 
   def feedback
-    if answer == true
-      puts "Correct!"
+    if correct? == true
+      #without @ on guess its a local var. not method that pulls info
+       "Correct!"
 
-    else answer == false
-      puts "Incorrect"
+    else
+       "Incorrect"
     end
+
   end
 end
-
-require 'pry'
-binding.pry
