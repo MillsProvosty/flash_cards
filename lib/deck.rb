@@ -5,18 +5,18 @@ require './lib/deck'
 require './lib/turn'
 
 class Deck
-attr_reader :cards, :count, :category
-  def initialize(cards, count, category)
+attr_reader :cards
+  def initialize(cards)
     @cards = cards
-    @count = count
-    @id_card_category = []
+    #@ is the instance vatriable
   end
 
-def id_card_category
-     id_card_category = []
-     deck.find_all do |x|
-  #name the new object and load it
-       p card.category == x
-       x << id_category
- end
+  def count
+    @cards.length
+  end
+
+ #  def card_in_category(category)
+ #    card.category == :STEM
+ #    p card
+ # end
 end

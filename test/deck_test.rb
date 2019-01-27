@@ -3,36 +3,35 @@ require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
 require './lib/turn'
-
+require 'pry'
 class DeckTest < Minitest::Test
-    def is_there_a_deck
-        deck = Deck.new(deck)
+    def test_is_there_a_deck
+        cards = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+        deck = Deck.new(cards)
+
+        #object
         assert_instance_of Deck, deck
     end
 
-    def cards_are_in_the_deck
-
-      cards = [card_1, card_2, card_3]
+    def test_cards_are_in_the_deck
         card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
         card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
         card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
-      assert_equal [card_1, card_2, card_3] , cards
+        cards = [card_1, card_2, card_3]
+        deck = Deck.new(cards)
+      assert_equal 3, deck.count
     end
 
-    def how_many_cards_in_deck
+    def test_count_cards_in_deck
+      card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+      card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
+      card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
+      cards = [card_1, card_2, card_3]
+      deck = Deck.new(cards)
+      deck.count
+    assert_equal 3, deck.count
+   end
 
-     count = cards.count
-     assert_equal 3, cards
-    end
-
-    def count_cards_in_category_STEM
-         category = [:STEM, :Geography, "Pop Culture"]
-         deck.find_all do |cards|
-         category << deck[:STEM]
-     end
-  end
+   def test_card_in_category
+   end
 end
-
-
-require "pry"
-binding.pry
