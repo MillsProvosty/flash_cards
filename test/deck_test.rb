@@ -8,7 +8,6 @@ class DeckTest < Minitest::Test
     def test_is_there_a_deck
         cards = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
         deck = Deck.new(cards)
-
         #object
         assert_instance_of Deck, deck
     end
