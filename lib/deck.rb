@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+
 require './lib/card'
 require './lib/deck'
 require './lib/turn'
@@ -15,8 +14,12 @@ attr_reader :cards
     @cards.length
   end
 
- #  def card_in_category(category)
- #    card.category == :STEM
- #    p card
- # end
+  def cards_in_category(category)
+      cards.find_all do |card|
+        #singular of what you're enumerating |pipes|
+      card.category == category
+      #calling .category (est. card.rb) on card object,
+      #match argument entered in the test
+    end
+ end
 end

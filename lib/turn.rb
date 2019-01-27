@@ -1,8 +1,12 @@
 
+require './lib/card'
+require './lib/deck'
+require './lib/turn'
+
 class Turn
   attr_reader :guess, :card
-  def initialize(string, card)
-    @guess = string
+  def initialize(guess, card)
+    @guess = guess
     @card = card
   end
 
@@ -14,10 +18,8 @@ class Turn
     if correct? == true
       #without @ on guess its a local var. not method that pulls info
        "Correct!"
-
     else
        "Incorrect"
     end
-
   end
 end
