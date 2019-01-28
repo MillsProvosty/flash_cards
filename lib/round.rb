@@ -31,8 +31,12 @@ attr_reader :turns, :deck, :card, :number_correct
       return @number_correct
   end
 
-def test_number_correct_by_category
-end 
+def number_correct_by_category(category)
+  #I'm wanting to collect the number of Correct
+  #answers and return an array by category?
+  @turns.group_by do |turn|
+
 
 end
+
 end
