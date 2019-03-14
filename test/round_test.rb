@@ -28,4 +28,37 @@ class RoundTest < Minitest::Test
   def test_turns_begins_with_empty_array
     assert_equal [], @round.turns
   end
+
+  def test_current_card_returns_correctly
+    assert_equal @card_1, @round.current_card
+  end
+
+  def test_take_turn_adds_to_turns_array
+    @new_turn = @round.take_turn("Juneau")
+    assert_equal [@new_turn], @round.turns
+    assert_equal true, @new_turn.correct?
+  end
+
+  def test_number_correct_returns_1
+    @new_turn = @round.take_turn("Juneau")
+    assert_equal 1, @round.number_correct
+  end
+
+  def test_number_correct_by_category
+    @new_turn = @round.take_turn("Juneau")
+    assert_equal [@new_turn], @round.turns
+    assert_equal true, @new_turn.correct?
+    assert_equal 1, @round.number_correct_by_category(:Geography)
+    assert_equal 0, @round.number_correct_by_category(:STEM)
+  end
+
+  def test_percent_correct
+    @new_turn = @round.take_turn("Juneau")
+    assert_equal [@new_turn], @round.turns
+    @new_turn = round.take_turn("Venus")
+    assert_equal true, @new_turn.correct?
+    assert_equal 50.0, @round.percent_correct
+  end
+
+
 end
