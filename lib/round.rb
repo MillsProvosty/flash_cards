@@ -22,8 +22,9 @@ class Round
       elsif @turns.first.guess == current_card.answer
         @correct_answers << new_turn
       end
-      @deck.cards.rotate
+      @deck.cards.rotate!
     return new_turn
+
   end
 
   def number_correct
@@ -41,7 +42,6 @@ class Round
   end
 
   def percent_correct
-    binding.pry
-    (number_correct / @turns.length )
+    ((number_correct / @turns.length.to_f ) * 100)
   end
 end
