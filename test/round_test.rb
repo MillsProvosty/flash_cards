@@ -34,31 +34,36 @@ class RoundTest < Minitest::Test
   end
 
   def test_take_turn_adds_to_turns_array
-    @new_turn = @round.take_turn("Juneau")
-    assert_equal [@new_turn], @round.turns
-    assert_equal true, @new_turn.correct?
+    new_turn_1 = @round.take_turn("Juneau")
+    assert_equal new_turn_1, @round.turns.last
+    assert_equal true, new_turn_1.correct?
+    new_turn_2= @round.take_turn("Venus")
+    assert_equal new_turn_2, @round.turns.last
+    assert_equal false, new_turn_2.correct?
+    new_turn_3 = @round.take_turn("North north west")
+    assert_equal new_turn_3, @round.turns.last
+    assert_equal true, new_turn_3.correct?
   end
 
   def test_number_correct_returns_1
-    @new_turn = @round.take_turn("Juneau")
+    new_turn = @round.take_turn("Juneau")
     assert_equal 1, @round.number_correct
   end
 
   def test_number_correct_by_category
-    @new_turn = @round.take_turn("Juneau")
-    assert_equal [@new_turn], @round.turns
-    assert_equal true, @new_turn.correct?
+    skip
+    new_turn = @round.take_turn("Juneau")
+    assert_equal [new_turn], @round.turns
+    assert_equal true, new_turn.correct?
     assert_equal 1, @round.number_correct_by_category(:Geography)
     assert_equal 0, @round.number_correct_by_category(:STEM)
   end
 
   def test_percent_correct
-    @new_turn = @round.take_turn("Juneau")
-    assert_equal [@new_turn], @round.turns
-    @new_turn = round.take_turn("Venus")
-    assert_equal true, @new_turn.correct?
+    new_turn_1 = @round.take_turn("Juneau")
+    new_turn_2 = @round.take_turn("Venus")
+    assert_equal [new_turn_1, new_turn_2], @round.turns
+    binding.pry
     assert_equal 50.0, @round.percent_correct
   end
-
-
 end
