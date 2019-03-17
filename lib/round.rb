@@ -17,11 +17,14 @@ class Round
   def take_turn(guess)
     new_turn = Turn.new(guess, current_card)
       @turns << new_turn
-      if @turns.last.guess != current_card.answer
-        @incorrect_answers << new_turn
-      elsif @turns.last.guess == current_card.answer
-        @correct_answers << new_turn
-      end
+
+      @turns.each do |turn|
+        if turn.guess != current_card.answer
+          @incorrect_answers << new_turn
+        elsif turn.guess == current_card.answer
+          @correct_answers << new_turn
+        end
+      end 
       @deck.cards.rotate!
     return new_turn
   end
