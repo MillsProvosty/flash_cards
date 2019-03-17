@@ -17,14 +17,13 @@ class Round
   def take_turn(guess)
     new_turn = Turn.new(guess, current_card)
       @turns << new_turn
-
       @turns.each do |turn|
         if turn.guess != current_card.answer
           @incorrect_answers << new_turn
-        elsif turn.guess == current_card.answer
+        else turn.guess == current_card.answer
           @correct_answers << new_turn
         end
-      end 
+      end
       @deck.cards.rotate!
     return new_turn
   end
@@ -33,15 +32,14 @@ class Round
     @correct_answers.length
   end
 
-  def number_correct_by_category(category_given)
+  def number_correct_by_category(category_arg)
     numbers_correct = 0
-      @correct_answers.sum do |correct_answer|
-      if correct_answer.card.category == (category_given)
+      @correct_answers.each do |correct_answer|
+      if correct_answer.card.category == (category_arg)
           numbers_correct += 1
-        else
-          0
       end
     end
+    numbers_correct
   end
 
   def percent_correct
@@ -50,15 +48,14 @@ class Round
 
   def turns_by_category(category_arg)
     category_turns = 0
-    @turns.sum do |turn|
+    @turns.each do |turn|
       turn.card.category == category_arg
         category_turns += 1
     end
     category_turns
   end
 
-
-  def percent_correct_by_category(category_given)
-    ((number_correct_by_category(category_given).to_f / turns_by_category(category_given)) * 100)
+  def percent_correct_by_category(category_arg)
+    ((number_correct_by_category(category_arg).to_f / turns_by_category(category_arg)) * 100)
   end
 end
