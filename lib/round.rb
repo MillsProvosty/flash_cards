@@ -17,6 +17,7 @@ class Round
   def take_turn(guess)
     new_turn = Turn.new(guess, current_card)
       @turns << new_turn
+
       @turns.each do |turn|
         if turn.guess != current_card.answer
           @incorrect_answers << new_turn
