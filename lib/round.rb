@@ -48,9 +48,11 @@ class Round
 
   def turns_by_category(category_arg)
     category_turns = 0
+
     @turns.each do |turn|
-      turn.card.category == category_arg
+      if turn.card.category == category_arg
         category_turns += 1
+      end 
     end
     category_turns
   end
