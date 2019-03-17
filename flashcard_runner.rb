@@ -25,10 +25,9 @@ def play_game
     elsif @round.turns.length >= 5
       puts "****** Game over! ******"
 
-      puts "You had #{@round.number_correct} guesses correct out of #{@round.turns.length} total guesses for a final score of #{@round.percent_correct} %.""
+      puts "You had #{@round.number_correct} guesses correct out of #{@round.turns.length} total guesses for a final score of #{@round.percent_correct} %."
 
-      puts "National Parks =
-     #{@round.percent_correct_by_category(:National_Parks)}  % correct\nLocal = #{@round.percent_correct_by_category(:Local)} % correct\nSports = #{@round.percent_correct_by_category(:Sports)} % correct"
+      puts "National Parks =  #{@round.percent_correct_by_category(:National_Parks)} % correct\nLocal = #{@round.percent_correct_by_category(:Local)} % correct\nSports = #{@round.percent_correct_by_category(:Sports)} % correct"
       puts "Thank you for playing!"
       break
     end
